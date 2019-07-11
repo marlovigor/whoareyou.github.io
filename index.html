@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+ 
+</head>
+
+<body>
+
+
+    <div class="bdiv">
+        <div> 
+            <img class ="oneimage" width="40%"src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"> 
+        </div>
+        <div class="maindiv">
+
+        <p>First name: <input data-bind="value: firstName" /></p>
+        <p>Last name: <input data-bind="value: lastName" /></p>
+        <p>what do you <br> love about yourself<input data-bind="value: Description" /></p>
+        
+        <h2>My first name is <span data-bind="text: firstname"> </h2>
+        <h2>My last name is <span data-bind="text: lastname"> </h2>
+        <h2>This is what i love about myself <span data-bind="text: description"> </h2>
+    </div>
+
+    </div>
+
+    
+
+
+
+
+    </div>
+    <script type='text/javascript' src='bower_components/knockout/dist/knockout.js'></script>
+    <script>
+        var ViewModel = function (first, last, Desc) {
+            this.firstName = ko.observable(first);
+            this.lastName = ko.observable(last);
+            this.Description = ko.observable(Desc);
+            
+
+            this.firstname = ko.pureComputed(() => {
+                
+                return this.firstName();
+            }, this);
+
+            this.lastname = ko.pureComputed(() => {
+                
+                return this.lastName();
+            }, this);
+
+            this.description = ko.pureComputed(() => {
+                return this.Description();
+            }, this);
+        };
+
+        ko.applyBindings(new ViewModel());
+
+    </script>
+
+
+</body>
+
+</html>
